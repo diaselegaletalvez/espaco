@@ -29,6 +29,12 @@ Três níveis, sempre visíveis antes de você confirmar:
 
 Nada é apagado de forma irrecuperável sem que a categoria diga, em português, o que você perde.
 
+## O manual
+
+Todos os comandos que o app executa estão documentados em **[MANUAL.md](MANUAL.md)** — dez blocos numerados, do mais seguro ao que exige pensar duas vezes, cada um dizendo o que você perde.
+
+Dentro do app eles ficam na aba **Automação** e no botão de livro da sidebar (⌘⇧M), com **Rodar agora** para os que não pedem senha e **Abrir no Terminal** para os que pedem.
+
 ## Instalação
 
 Baixe o `.dmg` mais recente em [Releases](../../releases/latest), arraste pra Applications e abra.
@@ -57,6 +63,28 @@ Pra regerar o ícone:
 ```bash
 swift gerar-icone.swift
 ```
+
+## Distribuindo
+
+O `distribuir.sh` faz tudo: compila em Release, assina com Developer ID, monta o `.dmg`, manda pra Apple notarizar e grampeia o selo.
+
+```bash
+./distribuir.sh
+```
+
+Pré-requisitos, uma vez só:
+
+1. Um certificado **Developer ID Application** no chaveiro — Xcode → Settings → Accounts → Manage Certificates → **+**
+2. As credenciais de notarização guardadas, com uma [senha de app](https://appleid.apple.com):
+
+```bash
+xcrun notarytool store-credentials "espaco-notarizacao" \
+  --apple-id "seu@email.com" \
+  --team-id "SEUTEAMID" \
+  --password "xxxx-xxxx-xxxx-xxxx"
+```
+
+Pra testar o build sem esperar a Apple: `./distribuir.sh --sem-notar`. O `.dmg` sai funcionando na sua máquina, mas o Gatekeeper bloqueia em qualquer outra.
 
 ## O relatório diário
 

@@ -85,6 +85,20 @@ p.corpo{color:var(--tinta2);max-width:64ch}
 
 pre{background:#08090F;border:1px solid var(--linha);border-radius:9px;padding:16px;overflow-x:auto;font-family:var(--mono);font-size:13px;color:#C9CEE6;line-height:1.65}
 
+
+.blocos{display:flex;flex-direction:column;gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:11px;overflow:hidden;margin-top:30px}
+.bloco{display:flex;align-items:center;gap:14px;background:var(--fundo2);padding:13px 16px}
+.bloco .n{flex:0 0 auto;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:12px}
+.bloco .n.z{background:rgba(95,192,138,.16);color:var(--verde)}
+.bloco .n.m{background:rgba(232,177,92,.16);color:var(--ambar)}
+.bloco .n.a{background:rgba(226,110,98,.16);color:#E26E62}
+.bloco div{flex:1;min-width:0}
+.bloco b{display:block;font-family:var(--disp);font-size:15px;font-weight:700}
+.bloco span{font-size:13.5px;color:var(--tinta2)}
+.bloco em{font-family:var(--mono);font-size:12.5px;color:var(--tinta3);font-style:normal;white-space:nowrap}
+code{font-family:var(--mono);font-size:.88em;background:rgba(255,255,255,.07);padding:.1em .35em;border-radius:3px}
+@media(max-width:520px){.bloco em{display:none}}
+
 footer{border-top:1px solid var(--linha);padding:34px 0 54px;color:var(--tinta3);font-size:14px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 footer a{color:var(--tinta2);text-decoration:none}
 footer .fim{margin-left:auto}
@@ -106,6 +120,8 @@ footer .fim{margin-left:auto}
     <div class="fim">
       <a href="#oquefaz">O que faz</a>
       <a href="#como">Como funciona</a>
+      <a href="#instalar">Instalar</a>
+      <a href="#manual">Manual</a>
       <a href="https://github.com/diaselegaletalvez/espaco">GitHub</a>
     </div>
   </div>
@@ -121,7 +137,8 @@ footer .fim{margin-left:auto}
       <a class="btn p" href="https://github.com/diaselegaletalvez/espaco/releases/latest">Baixar</a>
       <a class="btn s" href="https://github.com/diaselegaletalvez/espaco">Ver o código</a>
     </div>
-    <p class="nota">Grátis e sem assinatura. Requer macOS 14 ou mais novo.</p>
+    <p class="nota">Grátis e sem assinatura. Requer macOS 14 ou mais novo, em Mac com Apple silicon.<br>
+    Assinado com Developer ID e notarizado pela Apple — abre com dois cliques, sem contornar o Gatekeeper.</p>
   </div>
 
   <div class="numeros">
@@ -197,6 +214,47 @@ footer .fim{margin-left:auto}
       <li><b>Risco zero apaga, o resto vai pra Lixeira</b><span>Cache apagado libera espaço na hora. Qualquer coisa que você possa querer de volta vai pra Lixeira, e fica lá até você esvaziar.</span></li>
       <li><b>Registra o que aconteceu</b><span>Todo dia um relatório em markdown com o que mudou, quanto foi liberado e o que cresceu. Trinta dias de histórico, num arquivo que você pode ler sem o app.</span></li>
     </ol>
+  </section>
+
+
+
+  <section id="instalar">
+    <p class="eyebrow">Instalação</p>
+    <h2>Três passos, um deles opcional</h2>
+
+    <ol class="passos">
+      <li><b>Baixe e arraste</b><span>Abra o <code>.dmg</code> e arraste o Espaço pra pasta Aplicativos. O app é notarizado pela Apple, então abre normalmente — sem clique com botão direito nem <code>xattr</code>.</span></li>
+      <li><b>Aceite as notificações</b><span>Na primeira execução ele pede permissão pra avisar quando uma limpeza terminar. Pode recusar; o resto funciona igual.</span></li>
+      <li><b>Dê Acesso Total ao Disco</b> <em style="color:var(--tinta3);font-style:normal">— recomendado</em><span>Ajustes → Privacidade e Segurança → Acesso Total ao Disco → adicione o Espaço. Sem isso ele não consegue medir o <code>Library</code> de outros apps, e os totais aparecem menores do que a realidade.</span></li>
+    </ol>
+
+    <p class="corpo" style="margin-top:26px">O Espaço não é distribuído pela App Store porque ler <code>~/Library</code> e <code>/Library</code> exige sair do sandbox — e um app de limpeza que não enxerga essas pastas não serve pra nada.</p>
+  </section>
+
+  <section id="manual">
+    <p class="eyebrow">Manual</p>
+    <h2>Dez blocos, do mais seguro ao que exige pensar</h2>
+    <p class="corpo">Tudo que o Espaço faz por botão existe também como comando de terminal, numerado e em ordem. Dentro do app cada bloco tem um botão <b>Rodar agora</b>; os que pedem senha de administrador abrem direto no Terminal. Aqui fora, é só copiar.</p>
+
+    <div class="blocos">
+      <div class="bloco"><span class="n z">0</span><div><b>Preparar o terminal</b><span>Desliga os prompts do zsh e guarda a senha</span></div><em>—</em></div>
+      <div class="bloco"><span class="n z">1</span><div><b>Resto do Xcode</b><span>Caches de simulador e simuladores órfãos</span></div><em>3–11 GB</em></div>
+      <div class="bloco"><span class="n z">2</span><div><b>Runtimes tvOS, watchOS e xrOS</b><span>Se você não faz app pra TV, Watch ou Vision</span></div><em>15–45 GB</em></div>
+      <div class="bloco"><span class="n z">3</span><div><b>Caches de dev</b><span>CocoaPods, npm, Homebrew, Expo, Electron</span></div><em>3–8 GB</em></div>
+      <div class="bloco"><span class="n z">4</span><div><b>Claude, Chrome e Cursor</b><span>Login e abas ficam intactos</span></div><em>5–15 GB</em></div>
+      <div class="bloco"><span class="n z">5</span><div><b>Sistema, logs e Lixeira</b><span>Pede senha, e um restart depois</span></div><em>1–4 GB</em></div>
+      <div class="bloco"><span class="n m">6</span><div><b>node_modules, Pods e builds</b><span>Volta com npm install</span></div><em>3–10 GB</em></div>
+      <div class="bloco"><span class="n a">7</span><div><b>Archives do Xcode</b><span>Perde os dSYMs dos builds publicados</span></div><em>1–3 GB</em></div>
+      <div class="bloco"><span class="n a">8</span><div><b>Instaladores e jogos</b><span>Mundos salvos vão junto</span></div><em>3–8 GB</em></div>
+      <div class="bloco"><span class="n z">9</span><div><b>Caçar o que sobrou</b><span>Não apaga nada — mostra o peso fora da home</span></div><em>—</em></div>
+    </div>
+
+    <p class="corpo" style="margin-top:26px">Foi o bloco 9 que achou um <b>Install macOS Tahoe.app de 17 GB</b> encostado em <code>/Applications</code> muito depois de o sistema já estar instalado — o tipo de coisa que ninguém procura porque não parece lixo.</p>
+
+    <div class="botoes" style="margin-top:26px">
+      <a class="btn p" href="MANUAL.md">Ler o manual completo</a>
+      <a class="btn s" href="https://github.com/diaselegaletalvez/espaco/blob/main/MANUAL.md">Ver no GitHub</a>
+    </div>
   </section>
 
   <section>
