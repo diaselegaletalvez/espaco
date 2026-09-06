@@ -120,6 +120,7 @@ footer .fim{margin-left:auto}
     <div class="fim">
       <a href="#oquefaz">O que faz</a>
       <a href="#como">Como funciona</a>
+      <a href="#protecao">Proteção</a>
       <a href="#instalar">Instalar</a>
       <a href="#manual">Manual</a>
       <a href="https://github.com/diaselegaletalvez/espaco">GitHub</a>
@@ -132,7 +133,7 @@ footer .fim{margin-left:auto}
   <div class="hero">
     <span class="selo">app de Mac · Apple silicon</span>
     <h1>Seu Mac tem mais espaço do que você imagina.</h1>
-    <p class="lede">O Espaço varre o disco inteiro, desenha onde os gigabytes estão, e limpa o que dá pra limpar — separando o que se regenera sozinho do que você deveria pensar duas vezes antes de apagar.</p>
+    <p class="lede">O Espaço varre o disco inteiro, desenha onde os gigabytes estão, e limpa o que dá — separando o que se regenera sozinho do que você deveria pensar duas vezes antes de apagar. E fica de olho no que passa a rodar quando o Mac liga.</p>
     <div class="botoes">
       <a class="btn p" id="baixar" href="https://github.com/diaselegaletalvez/espaco/releases/latest/download/Espaco.dmg">
         Baixar para Mac
@@ -145,7 +146,7 @@ footer .fim{margin-left:auto}
 
   <div class="numeros">
     <div class="n1"><b>72 GB</b><span>recuperados na primeira noite de testes</span></div>
-    <div class="n2"><b>8 telas</b><span>revisão, mapa, apps, arquivos, projetos, saúde, relatórios, automação</span></div>
+    <div class="n2"><b>12 telas</b><span>revisão, mapa, apps, esquecidos, projetos, duplicados, proteção, saúde, meu mac, relatórios, automação</span></div>
     <div class="n3"><b>0</b><span>arquivos apagados sem você saber o que eram</span></div>
     <div class="n4"><b>00:00</b><span>o relatório diário que roda sozinho</span></div>
   </div>
@@ -185,6 +186,18 @@ footer .fim{margin-left:auto}
         <p>Memória, processador, bateria com ciclos e capacidade real. E uma frase dizendo o que fazer, não só o número.</p>
       </div>
       <div class="card">
+        <h3><span class="dot" style="background:var(--violeta)"></span>Proteção</h3>
+        <p>Seis checagens que importam de verdade: certificados raiz estranhos, compartilhamento aberto, apps com Acessibilidade, DNS sequestrado, XProtect atrasado, contas de administrador que você não criou.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot" style="background:var(--ciano)"></span>Rede e VPN</h3>
+        <p>Diz se você tem VPN ativa, qual o seu DNS, e avisa quando você está em Wi-Fi sem senha e desprotegido.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot" style="background:var(--verde)"></span>Vigilância</h3>
+        <p>Em segundo plano, observa LaunchAgents e a pasta Aplicativos. Se algo novo passa a rodar no boot, você é avisado na hora — é onde adware se instala.</p>
+      </div>
+      <div class="card">
         <h3><span class="dot" style="background:var(--verde)"></span>Automação</h3>
         <p>Um relatório por dia, no horário que você escolher, com limpeza automática do que é risco zero e histórico de 30 dias.</p>
       </div>
@@ -215,10 +228,29 @@ footer .fim{margin-left:auto}
       <li><b>Separa por risco</b><span>Cache que se regenera sozinho é risco zero. Código e builds são risco médio. dSYMs de app publicado são risco alto — e a etiqueta aparece antes de você clicar.</span></li>
       <li><b>Risco zero apaga, o resto vai pra Lixeira</b><span>Cache apagado libera espaço na hora. Qualquer coisa que você possa querer de volta vai pra Lixeira, e fica lá até você esvaziar.</span></li>
       <li><b>Registra o que aconteceu</b><span>Todo dia um relatório em markdown com o que mudou, quanto foi liberado e o que cresceu. Trinta dias de histórico, num arquivo que você pode ler sem o app.</span></li>
+      <li><b>Se atualiza sozinho</b><span>Checa versão nova uma vez por dia. Antes de instalar, confere se o download está assinado pelo mesmo desenvolvedor do app que está rodando — senão, cancela.</span></li>
     </ol>
   </section>
 
 
+
+
+  <section id="protecao">
+    <p class="eyebrow">Proteção</p>
+    <h2>Não é antivírus. É o que antivírus não olha.</h2>
+    <p class="corpo">O macOS já tem antimalware embutido, e ele funciona. O que ninguém confere são as portas que ficaram abertas — e é por elas que adware e sequestro de navegador entram. O Espaço checa seis coisas que dá pra verificar com certeza, e explica cada uma em português.</p>
+
+    <div class="blocos" style="margin-top:30px">
+      <div class="bloco"><span class="n a">!</span><div><b>Certificados raiz personalizados</b><span>Quem instala um consegue ler todo o seu tráfego HTTPS sem o navegador reclamar</span></div><em>crítico</em></div>
+      <div class="bloco"><span class="n m">↔</span><div><b>Compartilhamento e acesso remoto</b><span>SSH, Tela Remota e Arquivos ligados são portas abertas na rede</span></div><em>alto</em></div>
+      <div class="bloco"><span class="n m">⌘</span><div><b>Apps com Acessibilidade</b><span>A permissão mais poderosa do macOS: lê sua tela e digita por você</span></div><em>alto</em></div>
+      <div class="bloco"><span class="n m">◉</span><div><b>DNS, proxy e arquivo hosts</b><span>O jeito mais silencioso de te mandar pra sites falsos</span></div><em>alto</em></div>
+      <div class="bloco"><span class="n z">↻</span><div><b>XProtect da Apple</b><span>Se as definições estão paradas há meses, algo está bloqueando as atualizações</span></div><em>médio</em></div>
+      <div class="bloco"><span class="n z">◐</span><div><b>Contas de administrador</b><span>Toda conta admin pode instalar qualquer coisa no seu Mac</span></div><em>médio</em></div>
+    </div>
+
+    <p class="corpo" style="margin-top:26px">Cada achado vem com uma nota de 0 a 100, o que foi encontrado, <b>por que aquilo importa</b>, e o caminho exato nos Ajustes pra resolver. E o app diz, com todas as letras, que não compara arquivos com listas de malware — porque um scanner que não acha nada deixa você mais desprotegido do que saber onde olhar.</p>
+  </section>
 
   <section id="instalar">
     <p class="eyebrow">Instalação</p>
@@ -262,7 +294,7 @@ footer .fim{margin-left:auto}
   <section>
     <p class="eyebrow">Sem o app</p>
     <h2>O manual vem junto</h2>
-    <p class="corpo">Tudo que o Espaço faz por botão está documentado como comando de terminal dentro do próprio app, na aba Automação. Pra quando você quiser entender, adaptar, ou rodar numa máquina onde ele não está instalado.</p>
+    <p class="corpo">Tudo que o Espaço faz por botão está documentado como comando de terminal dentro do próprio app. E o manual <b>não é fixo</b>: ele mede a sua máquina e monta os blocos com os seus caminhos e os seus tamanhos. Sem Xcode instalado, o bloco de Xcode nem aparece. Se a sua pasta de código se chama <code>Developer</code> em vez de <code>projetos</code>, é esse o caminho que sai no comando.</p>
     <pre>df -h /System/Volumes/Data | tail -1
 du -sh ~/Library/* 2>/dev/null | sort -rh | head -12
 sudo du -sh -x /Applications /Library /opt /private/var 2>/dev/null | sort -rh</pre>
