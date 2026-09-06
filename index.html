@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espaço — o Mac limpo do seu jeito</title>
+<meta name="description" content="Um app de Mac que varre o disco, mostra onde os gigabytes estão e limpa o que dá, com relatório diário automático. Feito pela Dias Inc.">
+<meta property="og:title" content="Espaço">
+<meta property="og:description" content="Varre, mostra e limpa o disco do seu Mac. Nativo, rápido, sem assinatura.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/icone.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{
+  --fundo:#0E0F16; --fundo2:#15161F; --linha:#252736;
+  --tinta:#EDEEF5; --tinta2:#9FA3B8; --tinta3:#6B7089;
+  --violeta:#8184FF; --ciano:#7ECDE2; --verde:#5FC08A; --ambar:#E8B15C;
+  --sans:"Source Sans 3",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --disp:"Bricolage Grotesque",var(--sans);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fundo);color:var(--tinta);font-family:var(--sans);font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+a{color:var(--violeta)}
+
+header{padding:26px 0;border-bottom:1px solid var(--linha)}
+.nav{display:flex;align-items:center;gap:12px}
+.marca{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:700;font-size:19px}
+.logo{width:30px;height:30px;border-radius:8px;background:linear-gradient(140deg,#292B3A,#11121A);padding:5px;display:grid;grid-template-columns:1.1fr .9fr;grid-template-rows:1fr 1fr;gap:2px}
+.logo i{border-radius:2px;display:block}
+.logo i:nth-child(1){grid-row:1/3;background:linear-gradient(160deg,#8184FF,#585CE8)}
+.logo i:nth-child(2){background:linear-gradient(160deg,#7ECDE2,#58A8C4)}
+.logo i:nth-child(3){background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.nav .fim{margin-left:auto;display:flex;gap:20px;font-size:15px}
+.nav .fim a{color:var(--tinta2);text-decoration:none}
+.nav .fim a:hover{color:var(--tinta)}
+
+.hero{padding:76px 0 60px}
+.selo{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--violeta);border:1px solid rgba(129,132,255,.35);background:rgba(129,132,255,.10);padding:5px 11px;border-radius:20px;margin-bottom:24px}
+h1{font-family:var(--disp);font-weight:800;font-size:clamp(46px,8vw,82px);line-height:.95;letter-spacing:-.035em;margin:0 0 20px;text-wrap:balance}
+.lede{font-size:21px;line-height:1.5;color:var(--tinta2);max-width:56ch;margin:0 0 34px}
+.botoes{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:9px;font-weight:600;text-decoration:none;font-size:16px}
+.btn.p{background:var(--violeta);color:#0C0D14}
+.btn.p:hover{background:#9497ff}
+.btn.s{border:1px solid var(--linha);color:var(--tinta)}
+.btn.s:hover{border-color:var(--tinta3)}
+.nota{font-size:14px;color:var(--tinta3);margin-top:14px}
+
+.numeros{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:12px;overflow:hidden;margin:64px 0}
+.numeros div{background:var(--fundo2);padding:22px 20px}
+.numeros b{display:block;font-family:var(--disp);font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.numeros span{font-size:14px;color:var(--tinta2)}
+.n1 b{color:var(--violeta)} .n2 b{color:var(--ciano)} .n3 b{color:var(--verde)} .n4 b{color:var(--ambar)}
+
+section{padding:56px 0;border-top:1px solid var(--linha)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta3);margin:0 0 10px}
+h2{font-family:var(--disp);font-weight:700;font-size:clamp(28px,4vw,38px);line-height:1.12;letter-spacing:-.02em;margin:0 0 16px;max-width:22ch;text-wrap:balance}
+p.corpo{color:var(--tinta2);max-width:64ch}
+
+.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:14px;margin-top:34px}
+.card{background:var(--fundo2);border:1px solid var(--linha);border-radius:11px;padding:22px}
+.card h3{font-family:var(--disp);font-weight:700;font-size:18px;margin:0 0 6px;display:flex;align-items:center;gap:9px}
+.dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+.card p{margin:0;font-size:15px;color:var(--tinta2);line-height:1.55}
+
+.mapa{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:repeat(4,42px);gap:4px;margin-top:34px;border:1px solid var(--linha);border-radius:11px;padding:10px;background:var(--fundo2)}
+.mapa div{border-radius:4px;padding:8px 10px;font-size:12px;font-family:var(--mono);color:rgba(10,11,18,.82);overflow:hidden;line-height:1.3}
+.m1{grid-row:1/4;background:linear-gradient(150deg,#8184FF,#6367E6)}
+.m2{grid-row:1/3;background:linear-gradient(150deg,#7ECDE2,#5FAFC8)}
+.m3{background:linear-gradient(150deg,#E8B15C,#D19640)}
+.m4{background:linear-gradient(150deg,#5FC08A,#46A06E)}
+.m5{grid-column:2/4;background:linear-gradient(150deg,#8C93A8,#6E748A)}
+.m6{grid-column:1/4;background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);color:var(--tinta2)}
+
+.passos{counter-reset:p;margin-top:30px;padding:0;list-style:none}
+.passos li{counter-increment:p;position:relative;padding:0 0 22px 46px;border-left:1px solid var(--linha);margin-left:14px}
+.passos li:last-child{border-left-color:transparent;padding-bottom:0}
+.passos li::before{content:counter(p);position:absolute;left:-14px;top:0;width:28px;height:28px;border-radius:50%;background:var(--fundo2);border:1px solid var(--linha);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--violeta)}
+.passos b{display:block;font-family:var(--disp);font-size:17px;margin-bottom:3px}
+.passos span{color:var(--tinta2);font-size:15px}
+
+pre{background:#08090F;border:1px solid var(--linha);border-radius:9px;padding:16px;overflow-x:auto;font-family:var(--mono);font-size:13px;color:#C9CEE6;line-height:1.65}
+
+footer{border-top:1px solid var(--linha);padding:34px 0 54px;color:var(--tinta3);font-size:14px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+footer a{color:var(--tinta2);text-decoration:none}
+footer .fim{margin-left:auto}
+
+@media(max-width:620px){
+  .mapa{grid-template-columns:1.4fr 1fr;grid-template-rows:repeat(5,38px)}
+  .m5,.m6{grid-column:1/3}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="marca">
+      <div class="logo"><i></i><i></i><i></i></div>
+      Espaço
+    </div>
+    <div class="fim">
+      <a href="#oquefaz">O que faz</a>
+      <a href="#como">Como funciona</a>
+      <a href="https://github.com/diaselegaletalvez/espaco">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <span class="selo">app de Mac · Apple silicon</span>
+    <h1>Seu Mac tem mais espaço do que você imagina.</h1>
+    <p class="lede">O Espaço varre o disco inteiro, desenha onde os gigabytes estão, e limpa o que dá pra limpar — separando o que se regenera sozinho do que você deveria pensar duas vezes antes de apagar.</p>
+    <div class="botoes">
+      <a class="btn p" href="https://github.com/diaselegaletalvez/espaco/releases/latest">Baixar</a>
+      <a class="btn s" href="https://github.com/diaselegaletalvez/espaco">Ver o código</a>
+    </div>
+    <p class="nota">Grátis e sem assinatura. Requer macOS 14 ou mais novo.</p>
+  </div>
+
+  <div class="numeros">
+    <div class="n1"><b>72 GB</b><span>recuperados na primeira noite de testes</span></div>
+    <div class="n2"><b>8 telas</b><span>revisão, mapa, apps, arquivos, projetos, saúde, relatórios, automação</span></div>
+    <div class="n3"><b>0</b><span>arquivos apagados sem você saber o que eram</span></div>
+    <div class="n4"><b>00:00</b><span>o relatório diário que roda sozinho</span></div>
+  </div>
+
+  <section id="oquefaz">
+    <p class="eyebrow">O que faz</p>
+    <h2>Oito coisas que um disco cheio exige</h2>
+    <p class="corpo">Cada tela responde uma pergunta diferente. Nenhuma delas te obriga a entender o sistema de arquivos do macOS pra tomar uma decisão.</p>
+
+    <div class="grade">
+      <div class="card">
+        <h3><span class="dot" style="background:var(--violeta)"></span>Revisão</h3>
+        <p>Um botão roda cinco varreduras e devolve uma lista única: o que dá pra limpar, quanto pesa, e o risco de cada item. Marca e executa.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot" style="background:var(--ciano)"></span>Mapa</h3>
+        <p>Treemap navegável do disco. Cada retângulo é uma pasta, o tamanho é o peso real, a cor é o tipo. Clica pra entrar.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot" style="background:var(--ambar)"></span>Apps</h3>
+        <p>Cada app com o tamanho verdadeiro: o pacote mais tudo que ele espalhou pelo Library. Remove o app, os resíduos, ou só os resíduos.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot" style="background:var(--verde)"></span>Esquecidos</h3>
+        <p>Arquivos grandes que você não abre há meses, e os instaladores .dmg que ficaram para trás depois de instalados.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot" style="background:var(--violeta)"></span>Projetos</h3>
+        <p>Cruza a última vez que você mexeu em cada projeto com o peso do node_modules. Projeto parado há meses com 900 MB de dependências é uma decisão fácil.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot" style="background:var(--ciano)"></span>Duplicados</h3>
+        <p>Compara por tamanho, depois pelos primeiros 256 KB, e só então calcula o SHA-256 completo. Nada é chamado de cópia sem os bytes baterem.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot" style="background:var(--ambar)"></span>Saúde</h3>
+        <p>Memória, processador, bateria com ciclos e capacidade real. E uma frase dizendo o que fazer, não só o número.</p>
+      </div>
+      <div class="card">
+        <h3><span class="dot" style="background:var(--verde)"></span>Automação</h3>
+        <p>Um relatório por dia, no horário que você escolher, com limpeza automática do que é risco zero e histórico de 30 dias.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">O mapa</p>
+    <h2>Onde os gigabytes realmente estão</h2>
+    <p class="corpo">Listas de categorias só encontram o que alguém previu. O mapa mostra o disco como ele é — e é ali que aparecem as surpresas que nenhuma lista cobre.</p>
+
+    <div class="mapa">
+      <div class="m1">Library<br>66 GB</div>
+      <div class="m2">Applications<br>30 GB</div>
+      <div class="m3">projetos<br>7,9 GB</div>
+      <div class="m4">Downloads<br>1,3 GB</div>
+      <div class="m5">Developer · 33 GB</div>
+      <div class="m6">livre · 101 GB</div>
+    </div>
+  </section>
+
+  <section id="como">
+    <p class="eyebrow">Como funciona</p>
+    <h2>Nada some sem você ver primeiro</h2>
+
+    <ol class="passos">
+      <li><b>Mede antes de falar</b><span>Os tamanhos vêm do sistema de arquivos, não de estimativa. O total do app bate com o <code>df</code> do terminal.</span></li>
+      <li><b>Separa por risco</b><span>Cache que se regenera sozinho é risco zero. Código e builds são risco médio. dSYMs de app publicado são risco alto — e a etiqueta aparece antes de você clicar.</span></li>
+      <li><b>Risco zero apaga, o resto vai pra Lixeira</b><span>Cache apagado libera espaço na hora. Qualquer coisa que você possa querer de volta vai pra Lixeira, e fica lá até você esvaziar.</span></li>
+      <li><b>Registra o que aconteceu</b><span>Todo dia um relatório em markdown com o que mudou, quanto foi liberado e o que cresceu. Trinta dias de histórico, num arquivo que você pode ler sem o app.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="eyebrow">Sem o app</p>
+    <h2>O manual vem junto</h2>
+    <p class="corpo">Tudo que o Espaço faz por botão está documentado como comando de terminal dentro do próprio app, na aba Automação. Pra quando você quiser entender, adaptar, ou rodar numa máquina onde ele não está instalado.</p>
+    <pre>df -h /System/Volumes/Data | tail -1
+du -sh ~/Library/* 2>/dev/null | sort -rh | head -12
+sudo du -sh -x /Applications /Library /opt /private/var 2>/dev/null | sort -rh</pre>
+  </section>
+
+  <footer>
+    <span>Espaço — feito pela <a href="https://diaselegaletalvez.github.io">Dias Inc.</a></span>
+    <span class="fim"><a href="https://github.com/diaselegaletalvez/espaco">GitHub</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
