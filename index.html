@@ -134,10 +134,12 @@ footer .fim{margin-left:auto}
     <h1>Seu Mac tem mais espaço do que você imagina.</h1>
     <p class="lede">O Espaço varre o disco inteiro, desenha onde os gigabytes estão, e limpa o que dá pra limpar — separando o que se regenera sozinho do que você deveria pensar duas vezes antes de apagar.</p>
     <div class="botoes">
-      <a class="btn p" href="https://github.com/diaselegaletalvez/espaco/releases/latest">Baixar</a>
+      <a class="btn p" id="baixar" href="https://github.com/diaselegaletalvez/espaco/releases/latest/download/Espaco.dmg">
+        Baixar para Mac
+      </a>
       <a class="btn s" href="https://github.com/diaselegaletalvez/espaco">Ver o código</a>
     </div>
-    <p class="nota">Grátis e sem assinatura. Requer macOS 14 ou mais novo, em Mac com Apple silicon.<br>
+    <p class="nota" id="versao">Grátis e sem assinatura. Requer macOS 14 ou mais novo, em Mac com Apple silicon.<br>
     Assinado com Developer ID e notarizado pela Apple — abre com dois cliques, sem contornar o Gatekeeper.</p>
   </div>
 
@@ -272,5 +274,38 @@ sudo du -sh -x /Applications /Library /opt /private/var 2>/dev/null | sort -rh</
   </footer>
 
 </div>
+
+<script>
+(async () => {
+  const nota = document.getElementById("versao");
+  if (!nota) return;
+  const base = nota.innerHTML;
+  try {
+    const r = await fetch("https://api.github.com/repos/diaselegaletalvez/espaco/releases/latest",
+                          { headers: { Accept: "application/vnd.github+json" } });
+    if (!r.ok) return;
+    const d = await r.json();
+
+    const dmg = (d.assets || []).find(a => a.name.toLowerCase().endsWith(".dmg"));
+    const mb = dmg ? (dmg.size / 1048576).toFixed(1).replace(".", ",") + " MB" : null;
+    const quando = d.published_at
+      ? new Date(d.published_at).toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" })
+      : null;
+
+    const partes = [];
+    if (d.tag_name) partes.push("Versão " + d.tag_name.replace(/^v/, ""));
+    if (mb) partes.push(mb);
+    if (quando) partes.push(quando);
+
+    if (partes.length) {
+      nota.innerHTML = "<b style='color:var(--tinta)'>" + partes.join(" · ") + "</b><br>" + base;
+    }
+    if (dmg) {
+      const btn = document.getElementById("baixar");
+      if (btn) btn.href = dmg.browser_download_url;
+    }
+  } catch (e) {}
+})();
+</script>
 </body>
 </html>
