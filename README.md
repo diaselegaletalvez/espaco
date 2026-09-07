@@ -46,13 +46,20 @@ Na primeira execução o macOS vai pedir:
 
 Ajustes → Privacidade e Segurança → Acesso total ao disco → adicione o Espaço.
 
+## Onde está o quê
+
+| Repositório | Conteúdo |
+|---|---|
+| [`espaco`](https://github.com/diaselegaletalvez/espaco) | este site, o manual e os **releases** (`.dmg` e `.pkg`) |
+| [`espaco-mac`](https://github.com/diaselegaletalvez/espaco-mac) | o código do app de Mac (`Espaco.xcodeproj`) |
+
 ## Compilando
 
 Requer Xcode 16+ e macOS 14+.
 
 ```bash
-git clone https://github.com/diaselegaletalvez/espaco.git
-cd espaco
+git clone https://github.com/diaselegaletalvez/espaco-mac.git
+cd espaco-mac
 open Espaco.xcodeproj
 ```
 
