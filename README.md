@@ -37,7 +37,7 @@ Dentro do app eles ficam na aba **Automação** e no botão de livro da sidebar 
 
 ## Instalação
 
-Baixe o `.dmg` mais recente em [Releases](../../releases/latest), arraste pra Applications e abra.
+Baixe o `.dmg` mais recente em [Releases](../../releases/latest). Se quiser só as automações sem interface, há dois `.pkg`: `riskzero` e `riskmedio`, arraste pra Applications e abra.
 
 Na primeira execução o macOS vai pedir:
 
