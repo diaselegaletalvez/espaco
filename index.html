@@ -121,6 +121,7 @@ footer .fim{margin-left:auto}
       <a href="#oquefaz">O que faz</a>
       <a href="#como">Como funciona</a>
       <a href="#protecao">Proteção</a>
+      <a href="#automacoes">Terminal</a>
       <a href="#instalar">Instalar</a>
       <a href="#manual">Manual</a>
       <a href="https://github.com/diaselegaletalvez/espaco">GitHub</a>
@@ -138,7 +139,7 @@ footer .fim{margin-left:auto}
       <a class="btn p" id="baixar" href="https://github.com/diaselegaletalvez/espaco/releases/latest/download/Espaco.dmg">
         Baixar para Mac
       </a>
-      <a class="btn s" href="https://github.com/diaselegaletalvez/espaco">Ver o código</a>
+      <a class="btn s" href="https://github.com/diaselegaletalvez/espaco/releases/latest/download/Espaco-Automacoes.pkg">Só as automações</a>
     </div>
     <p class="nota" id="versao">Grátis e sem assinatura. Requer macOS 14 ou mais novo, em Mac com Apple silicon.<br>
     Assinado com Developer ID e notarizado pela Apple — abre com dois cliques, sem contornar o Gatekeeper.</p>
@@ -234,6 +235,31 @@ footer .fim{margin-left:auto}
 
 
 
+
+
+  <section id="automacoes">
+    <p class="eyebrow">Sem interface</p>
+    <h2>Ou só as automações, sem abrir app nenhum</h2>
+    <p class="corpo">Um segundo download, um instalador de 40 KB. Ele coloca o comando <code>espaco</code> no Terminal, agenda o relatório diário à meia-noite, e roda uma primeira limpeza de risco zero na hora. Bom pra quem vive no terminal — ou pra deixar rodando num Mac que você administra pra outra pessoa.</p>
+
+    <pre>$ espaco status
+  disco:  usado 110G  livre 119G  (48%)
+
+$ espaco limpar
+  [ok] Símbolos de debug do iPhone          +21.0 GB
+  [ok] DerivedData                           +6.3 GB
+  [ok] CocoaPods                             +2.3 GB
+  [--] Expo                                  nada
+  [ok] Cache do Chrome                       +7.7 GB
+
+  liberado: +37.3 GB</pre>
+
+    <p class="corpo" style="margin-top:22px">O instalador diz na primeira tela exatamente o que vai fazer, e <b>não toca no que exige decisão</b> — <code>node_modules</code>, Pods, Archives, apps e arquivos pessoais ficam onde estão. Isso é trabalho do app, onde cada item aparece com tamanho e risco antes de você confirmar.</p>
+
+    <div class="botoes" style="margin-top:24px">
+      <a class="btn s" href="https://github.com/diaselegaletalvez/espaco/releases/latest/download/Espaco-Automacoes.pkg">Baixar o instalador</a>
+    </div>
+  </section>
 
   <section id="protecao">
     <p class="eyebrow">Proteção</p>
