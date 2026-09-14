@@ -2,9 +2,7 @@
 
 App de Mac que varre o disco, mostra onde os gigabytes estão e limpa o que dá — separando o que se regenera sozinho do que você deveria pensar duas vezes antes de apagar.
 
-Nativo em SwiftUI, sem sandbox, sem assinatura.
-
-> Nome provisório. O definitivo sai quando o app estiver pronto.
+Nativo em SwiftUI, sem sandbox. Assinado com Developer ID e notarizado pela Apple. O `.dmg` sai pelas [Releases](../../releases/latest) do GitHub.
 
 ## O que ele faz
 
@@ -52,6 +50,7 @@ Ajustes → Privacidade e Segurança → Acesso total ao disco → adicione o Es
 |---|---|
 | [`espaco`](https://github.com/diaselegaletalvez/espaco) | este site, o manual e os **releases** (`.dmg` e `.pkg`) |
 | [`espaco-mac`](https://github.com/diaselegaletalvez/espaco-mac) | o código do app de Mac (`Espaco.xcodeproj`) |
+| [`espaco-mobile`](https://github.com/diaselegaletalvez/espaco-mobile) | o app de celular, em React Native |
 
 ## Compilando
 
